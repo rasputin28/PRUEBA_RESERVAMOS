@@ -113,3 +113,11 @@ Para permitir que la aplicación converse con el usuario y considere los datos d
 
 5. **Ejecutar la Aplicación**:
     - Ejecuta la aplicación Streamlit y utiliza el campo de texto y el botón para obtener respuestas generadas automáticamente basadas en los datos filtrados.
+
+    ## Uso de IA en el Desarrollo
+
+    Durante el desarrollo de este proyecto, utilicé herramientas de inteligencia artificial para depurar algunos problemas menores y acelerar el proceso de codificación. En particular, empleé GitHub Copilot para obtener sugerencias de código y soluciones rápidas a problemas comunes. Esto me permitió enfocarme en la lógica principal de la aplicación y mejorar la eficiencia del desarrollo.
+
+    Especialmente la utilicé para solucionar problemas triviales de sintáxis en app.py ya que no estoy completamente familairizado con streamlit. 
+
+    El código de app.py considero que se podría refactorizar aún más especialmente en lo que corresponde al preprocesamiento de datos, solo que por tiempo no lo pude realizar.
