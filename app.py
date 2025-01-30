@@ -28,23 +28,19 @@ if user_input:
         else:
             formatted_df = format_room_data(filtered_df)
 
-            # Extract numeric values for the slider
-            min_price_value = int(filtered_df['price_per_night'].min())
-            max_price_value = int(filtered_df['price_per_night'].max())
-
             # Add sliders for filtering
             min_price, max_price = st.slider(
                 "Precio por Noche",
-                min_value=min_price_value,
-                max_value=max_price_value,
-                value=(min_price_value, max_price_value)
+                min_value=0,
+                max_value=10000,
+                value=(0, 10000)
             )
 
             min_rating, max_rating = st.slider(
                 "Calificación",
-                min_value=float(filtered_df['rating_overall'].min()),
-                max_value=float(filtered_df['rating_overall'].max()),
-                value=(float(filtered_df['rating_overall'].min()), float(filtered_df['rating_overall'].max()))
+                min_value=0.0,
+                max_value=5.0,
+                value=(0.0, 5.0)
             )
 
             # Convert 'Precio por Noche' back to numeric for filtering
