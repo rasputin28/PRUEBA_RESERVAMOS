@@ -66,9 +66,9 @@ Sigue estos pasos para descargar e instalar el repositorio:
 - Si no se encuentran resultados para la ciudad especificada, se mostrará un mensaje indicando "No se encontraron resultados para la ciudad especificada".
 - Si no se encuentran resultados después de aplicar los filtros, se mostrará un mensaje indicando "No se encontraron resultados".
 
-## Opcional: Crear una Aplicación RAG (Retrieve and Generate)
+## Opcional: Conversación con el Asistente
 
-### Paso a Paso para Crear una Aplicación RAG
+Para permitir que la aplicación converse con el usuario y considere los datos de la aplicación principal, sigue estos pasos:
 
 1. **Preparar el Entorno**:
     - Asegúrate de tener las bibliotecas necesarias instaladas:
@@ -83,6 +83,7 @@ Sigue estos pasos para descargar e instalar el repositorio:
 
         openai.api_key = 'tu-clave-api'
         ```
+
 3. **Crear una Función para Generar Respuestas**:
     - Utiliza la API de OpenAI para generar respuestas basadas en los datos filtrados:
         ```python
@@ -96,15 +97,19 @@ Sigue estos pasos para descargar e instalar el repositorio:
         ```
 
 4. **Integrar la Función en la Aplicación**:
-    - Añade un botón en la aplicación Streamlit para generar respuestas:
+    - Añade un campo de texto y un botón en la aplicación Streamlit para generar respuestas:
         ```python
-        if st.button('Generar Respuesta'):
-            prompt = "Genera una descripción basada en los siguientes datos de hospedajes:\n"
+        st.subheader("Conversación con el Asistente")
+        conversation_input = st.text_input("¿En qué te puedo ayudar?")
+        if conversation_input:
+            prompt = f"Genera una respuesta basada en los siguientes datos de hospedajes:\n"
             for index, row in filtered_df.iterrows():
                 prompt += f"Hospedaje: {row['Hospedaje']}, Precio por Noche: ${row['Precio por Noche']:.2f}, Calificación: {row['Calificación']}, Amenidades: {row['Amenidades']}\n"
+            prompt += f"\nPregunta: {conversation_input}\nRespuesta:"
+
             response = generate_response(prompt)
             st.write(response)
         ```
 
 5. **Ejecutar la Aplicación**:
-    - Ejecuta la aplicación Streamlit y utiliza el botón "Generar Respuesta" para obtener descripciones generadas automáticamente basadas en los datos filtrados.
+    - Ejecuta la aplicación Streamlit y utiliza el campo de texto y el botón para obtener respuestas generadas automáticamente basadas en los datos filtrados.
